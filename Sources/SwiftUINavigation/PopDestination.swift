@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PopDestination {
+public enum PopDestination {
 
     case pop
     case popToRoot

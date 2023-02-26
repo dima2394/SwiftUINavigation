@@ -3,13 +3,13 @@ import SwiftUI
 public struct NavigationViewController<Content: View>: View {
 
     @ObservedObject
-    private var viewModel: NavigationViewModel = .init(easing: .easeOut(duration: 0.3))
+    private var viewModel: NavigationViewModel
     private var content: Content
     private var transition: (push: AnyTransition, pop: AnyTransition)
 
-    init(viewModel: NavigationViewModel,
-         transition: NavigationAnimationType,
-         @ViewBuilder contentBuilder: @escaping () -> Content) {
+    public init(viewModel: NavigationViewModel = .init(easing: .easeOut(duration: 0.3)),
+                transition: NavigationAnimationType,
+                @ViewBuilder contentBuilder: @escaping () -> Content) {
         self.viewModel = viewModel
         self.content = contentBuilder()
         switch transition {

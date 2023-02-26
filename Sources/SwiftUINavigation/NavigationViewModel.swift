@@ -21,18 +21,18 @@ public class NavigationViewModel: ObservableObject {
         }
     }
 
-    init(easing: Animation) {
+    public init(easing: Animation) {
         self.easing = easing
     }
 
-    func push<V: View>(new view: V) {
+    public func push<V: View>(new view: V) {
         withAnimation(easing) {
             let screen = NavigationScreen(id: UUID().uuidString, screenView: AnyView(view))
             screensStack.push(new: screen)
         }
     }
 
-    func pop(destination: PopDestination = .pop) {
+    public func pop(destination: PopDestination = .pop) {
         withAnimation(easing) {
             switch destination {
             case .pop:
